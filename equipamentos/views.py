@@ -9,7 +9,7 @@ from datetime import datetime
 from django.db.models import Count, Sum, F, ExpressionWrapper, DurationField, IntegerField
 
 
-@login_required
+#@login_required
 def lista_equipamentos(request):
     # Obtém os parâmetros da query string
     nome = request.GET.get('nome', '')
@@ -119,7 +119,7 @@ def confirmar_exclusao(request, pk):
     return render(request, 'equipamentos/confirmar_exclusao.html', {'equipamento': equipamento})
 
 
-@login_required
+#@login_required
 def detalhes_equipamento(request, pk):
     equipamento = get_object_or_404(Equipamento, pk=pk)
     intervencao_list = Intervencao.objects.filter(equipamento=equipamento)
@@ -129,7 +129,7 @@ def detalhes_equipamento(request, pk):
     })
     
 
-@login_required
+#@login_required
 def lista_intervencoes(request):    
     equipamentos = Equipamento.objects.all()
     tecnicos = Tecnico.objects.all()
@@ -218,13 +218,14 @@ def excluir_intervencao(request, pk):
 
 
 # Lista de técnicos
+@login_required
 def lista_tecnicos(request):
     tecnicos = Tecnico.objects.all()
     return render(request, 'tecnicos/lista.html', {'tecnicos': tecnicos})
 
 
 # Detalhes do técnico
-@login_required
+#@login_required
 def detalhes_tecnico(request, pk):
     tecnico = get_object_or_404(Tecnico, pk=pk)
     return render(request, 'tecnicos/detalhes.html', {'tecnico': tecnico})
@@ -289,7 +290,7 @@ def entregar_equipamento(request, equipamento_id):
     return redirect('lista_equipamentos')  # Redireciona de volta para a lista
 
 
-
+@login_required
 def relatorios(request):
     # Relatório de número de intervenções e tempo total por técnico (em minutos)
     intervencao_por_tecnico = Intervencao.objects.values('tecnico__nome').annotate(

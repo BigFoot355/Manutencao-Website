@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Criar/Editar Técnico{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if tecnico %}Editar{% else %}Adicionar{% endif %} Técnico</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-save"></i> Gravar
+        </button>
+    </form>
+</div>
+{% endblock %}

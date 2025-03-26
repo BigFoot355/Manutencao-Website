@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Detalhes do Técnico{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Detalhes de {{ tecnico.nome }}</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Nome:</strong> {{ tecnico.nome }}</li>
+        <li class="list-group-item"><strong>Telefone:</strong> {{ tecnico.telefone }}</li>
+        <li class="list-group-item"><strong>Email:</strong> {{ tecnico.email }}</li>
+    </ul>
+    <a href="{% url 'editar_tecnico' tecnico.pk %}" class="btn btn-warning mt-3">
+        <i class="fa-solid fa-edit"></i> Editar
+    </a>
+    <a href="{% url 'excluir_tecnico' tecnico.pk %}" class="btn btn-danger mt-3">
+        <i class="fa-solid fa-trash"></i> Excluir
+    </a>
+</div>
+{% endblock %}

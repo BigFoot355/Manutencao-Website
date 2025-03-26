@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Tem a certeza que deseja excluir o técnico {{ tecnico.nome }}?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i> Excluir
+        </button>
+        <a href="{% url 'lista_tecnicos' %}" class="btn btn-secondary">
+            <i class="fa-solid fa-times"></i> Cancelar
+        </a>
+    </form>
+</div>
+{% endblock %}

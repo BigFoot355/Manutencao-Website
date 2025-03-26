@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Relatórios{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fa-solid fa-file"></i> Relatórios</h2>
+</div>
+
+<h4>Equipamentos por Estado</h4>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Estado</th>
+            <th>Número de Equipamentos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in equipamentos_por_estado %}
+        <tr>
+            <td>{{ item.status }}</td>
+            <td>{{ item.num_equipamentos }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2" class="text-center text-muted">Nenhum dado encontrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<h4>Intervenções por Técnico</h4>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Técnico</th>
+            <th>Número de Intervenções</th>
+            <th>Tempo Total de Intervenções</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in intervencao_por_tecnico %}
+        <tr>
+            <td>{{ item.tecnico__nome }}</td>
+            <td>{{ item.num_intervencoes }}</td>
+            <td>{{ item.tempo_total }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center text-muted">Nenhum dado encontrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

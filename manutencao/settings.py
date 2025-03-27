@@ -79,7 +79,9 @@ WSGI_APPLICATION = 'manutencao.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('postgresql://manutencao_user:eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY@dpg-cvis3ii4d50c73aai2i0-a/manutencao_bd'),
-        engine='django.db.backends.postgresql'  # Define explicitamente o engine
+        engine='django.db.backends.postgresql',  # Define explicitamente o engine
+        conn_max_age=600,  # Opcional, mas útil para conexões persistentes
+        ssl_require=True  # Caso seja necessário usar SSL
     )
 }
 

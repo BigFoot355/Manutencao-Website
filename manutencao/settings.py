@@ -76,12 +76,14 @@ WSGI_APPLICATION = 'manutencao.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('postgresql://manutencao_user:eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY@dpg-cvis3ii4d50c73aai2i0-a/manutencao_bd'),
-        engine='django.db.backends.postgresql'  # Define explicitamente o engine
-    )
-}
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=os.getenv('postgresql://manutencao_user:eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY@dpg-cvis3ii4d50c73aai2i0-a/manutencao_bd'),
+#        engine='django.db.backends.postgresql',  # Define explicitamente o engine
+#        conn_max_age=600,  # Opcional, mas útil para conexões persistentes
+#        ssl_require=True  # Caso seja necessário usar SSL
+#    )
+#}
 
 #DATABASES = {
 #    'default': {
@@ -90,16 +92,16 @@ DATABASES = {
 #    }
 #}
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'manutencao_bd',
-#        'USER': 'manutencao_user',
-#        'PASSWORD': 'eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY',
-#        'HOST': 'localhost',  # ou o IP do servidor PostgreSQL
-#        'PORT': '5432',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # Este valor é importante!
+        'NAME': os.getenv('manutencao_bd'),
+        'USER': os.getenv('manutencao_user'),
+        'PASSWORD': os.getenv('eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY'),
+        'HOST': os.getenv('dpg-cvis3ii4d50c73aai2i0-a'),
+        'PORT': os.getenv('DB_PORT', '5432'),
+    }
+}
 
 
 # Password validation

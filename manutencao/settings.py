@@ -96,11 +96,11 @@ WSGI_APPLICATION = 'manutencao.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # Este valor é importante!
-        'NAME': os.getenv('manutencao_bd'),
-        'USER': os.getenv('manutencao_user'),
-        'PASSWORD': os.getenv('eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY'),
-        'HOST': os.getenv('dpg-cvis3ii4d50c73aai2i0-a'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'NAME': 'manutencao_bd',
+        'USER': 'manutencao_user',
+        'PASSWORD': 'eKqM9FQFVZXlJBOJv0po7aM22jnEs5CY',
+        'HOST': 'dpg-cvis3ii4d50c73aai2i0-a',
+        'PORT': '5432',
     }
 }
 
